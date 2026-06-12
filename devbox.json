@@ -2,7 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
   "packages": [
     "git@latest",
-    "gh@latest"
+    "gh@latest",
+    "nodejs@24",
+    "pnpm@latest",
+    "go@latest"
   ],
   "shell": {
     "init_hook": [
@@ -11,31 +14,28 @@
     ],
     "scripts": {
       "setup": [
-        "echo '【TODO】依存インストールコマンドをここに記載 (例: pnpm install)'"
+        "cd frontend && pnpm install"
       ],
-      "dev": [
-        "echo '【TODO】開発サーバー起動コマンドをここに記載'"
+      "dev:front": [
+        "cd frontend && pnpm dev"
+      ],
+      "dev:back": [
+        "cd backend && go run ./..."
       ],
       "build": [
-        "echo '【TODO】ビルドコマンドをここに記載'"
+        "cd frontend && pnpm build"
       ],
-      "test": [
-        "echo '【TODO】テストコマンドをここに記載 (例: pnpm test --coverage)'"
+      "test:front": [
+        "cd frontend && pnpm test"
+      ],
+      "test:back": [
+        "cd backend && go test ./..."
       ],
       "lint": [
-        "echo '【TODO】lintコマンドをここに記載 (例: pnpm lint)'"
-      ],
-      "lint:fix": [
-        "echo '【TODO】lint自動修正コマンドをここに記載'"
-      ],
-      "format": [
-        "echo '【TODO】formatコマンドをここに記載 (例: pnpm prettier --write .)'"
-      ],
-      "format:check": [
-        "echo '【TODO】formatチェックコマンドをここに記載 (例: pnpm prettier --check .)'"
+        "cd frontend && pnpm lint"
       ],
       "typecheck": [
-        "echo '【TODO】型チェックコマンドをここに記載 (例: pnpm tsc --noEmit)'"
+        "cd frontend && pnpm astro check"
       ]
     }
   },
